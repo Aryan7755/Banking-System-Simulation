@@ -11,4 +11,15 @@ public class Bank {
 
         System.out.println("Account created. Account Number: " + accNo);
     }
+
+    public void deposit(int accNo, double amount) {
+        Account acc = accounts.get(accNo);
+
+        if (acc == null) {
+            System.out.println("Account not found");
+            return;
+        }
+
+        acc.deposit(amount);
+    }
 }
