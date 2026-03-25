@@ -28,4 +28,17 @@ public class Account {
     public List<Transaction> getTransactions() {
         return transactions;
     }
+
+    public void deposit(double amount) {
+        if (amount <= 0) {
+            System.out.println("Invalid deposit amount");
+            return;
+        }
+
+        balance += amount;
+        transactions.add(new Transaction("DEPOSIT", amount));
+        System.out.println("Deposit successful");
+    }
+
+
 }
