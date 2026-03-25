@@ -14,4 +14,8 @@ public class Transaction {
         this.amount = amount;
         this.date = LocalDateTime.now();
     }
+
+    public String toString() {
+        return transactionId + " | " + type + " | " + amount + " | " + date;
+    }
 }
