@@ -12,4 +12,20 @@ public class Account {
         this.balance = 0;
         this.transactions = new ArrayList<>();
     }
+
+    public int getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getHolderName() {
+        return holderName;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
 }
