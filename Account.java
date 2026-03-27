@@ -55,6 +55,18 @@ public class Account {
         System.out.println("Withdrawal successful");
     }
 
+    public void printTransactionHistory() {
+        if (transactions.isEmpty()) {
+            System.out.println("No transactions found");
+            return;
+        }
+
+        System.out.println("\nTransaction History:");
+        for (Transaction t : transactions) {
+            System.out.println(t);
+        }
+    }
+
 
 
 }
