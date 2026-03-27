@@ -13,7 +13,7 @@ public class Bank {
         System.out.println("Account created. Account Number: " + accNo);
     }
 
-    public void deposit(int accNo, double amount) {
+    public void depositAmount(int accNo, double amount) {
         Account acc = accounts.get(accNo);
 
         if (acc == null) {
@@ -24,7 +24,7 @@ public class Bank {
         acc.deposit(amount);
     }
 
-    public void withdraw(int accNo, double amount) {
+    public void withdrawAmount(int accNo, double amount) {
         Account acc = accounts.get(accNo);
 
         if (acc == null) {
@@ -61,6 +61,11 @@ public class Bank {
     public void loadFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("bank.dat"))) {
             accounts = (HashMap<Integer, Account>) ois.readObject();
+            accountCounter = accounts.keySet()
+                    .stream()
+                    .max(Integer::compareTo)
+                    .orElse(1000) + 1;
+
             System.out.println("Data loaded successfully");
         } catch (Exception e) {
             System.out.println("No previous data found");
