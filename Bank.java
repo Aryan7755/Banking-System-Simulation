@@ -1,3 +1,6 @@
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
 public class Bank {
@@ -46,5 +49,14 @@ public class Bank {
         }
 
         acc.printTransactionHistory();
+    }
+
+    public void saveToFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("bank.dat"))) {
+            oos.writeObject(accounts);
+            System.out.println("Data saved successfully");
+        } catch (IOException e) {
+            System.out.println("Error saving data");
+        }
     }
 }
