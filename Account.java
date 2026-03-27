@@ -1,6 +1,8 @@
+import java.io.Serializable;
 import java.util.*;
 
-public class Account {
+public class Account implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int accountNumber;
     private String holderName;
     private double balance;
