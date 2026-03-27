@@ -35,8 +35,16 @@ public class Bank {
         } catch (InsufficientBalanceException e) {
             System.out.println(e.getMessage());
         }
+    }
 
+    public void showHistory(int accNo) {
+        Account acc = accounts.get(accNo);
 
+        if (acc == null) {
+            System.out.println("Account not found");
+            return;
+        }
 
+        acc.printTransactionHistory();
     }
 }
