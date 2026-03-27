@@ -40,6 +40,21 @@ public class Account {
         System.out.println("Deposit successful");
     }
 
+    public void withdraw(double amount) throws InsufficientBalanceException {
+        if (amount <= 0) {
+            System.out.println("Invalid withdrawal amount");
+            return;
+        }
+
+        if (amount > balance) {
+            throw new InsufficientBalanceException("Not enough balance");
+        }
+
+        balance -= amount;
+        transactions.add(new Transaction("WITHDRAW", amount));
+        System.out.println("Withdrawal successful");
+    }
+
 
 
 }
