@@ -13,24 +13,22 @@ public class Bank {
         System.out.println("Account created. Account Number: " + accNo);
     }
 
-    public void depositAmount(int accNo, double amount) {
+    private Account getAccount(int accNo) {
         Account acc = accounts.get(accNo);
-
         if (acc == null) {
             System.out.println("Account not found");
-            return;
         }
+        return acc;
+    }
+
+    public void depositAmount(int accNo, double amount) {
+        Account acc = getAccount(accNo);
 
         acc.deposit(amount);
     }
 
     public void withdrawAmount(int accNo, double amount) {
-        Account acc = accounts.get(accNo);
-
-        if (acc == null) {
-            System.out.println("Account not found");
-            return;
-        }
+        Account acc = getAccount(accNo);
         try {
             acc.withdraw(amount);
         } catch (InsufficientBalanceException e) {
@@ -39,13 +37,7 @@ public class Bank {
     }
 
     public void showHistory(int accNo) {
-        Account acc = accounts.get(accNo);
-
-        if (acc == null) {
-            System.out.println("Account not found");
-            return;
-        }
-
+        Account acc = getAccount(accNo);
         acc.printTransactionHistory();
     }
 

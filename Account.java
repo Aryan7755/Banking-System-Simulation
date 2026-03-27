@@ -27,6 +27,8 @@ public class Account implements Serializable {
         return balance;
     }
 
+
+
     public List<Transaction> getTransactions() {
         return transactions;
     }

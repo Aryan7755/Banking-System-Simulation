@@ -8,7 +8,7 @@ public class Main {
             Bank bank = new Bank();
 
             bank.createAccount("Aryan");
-            bank.deposit(1001, 5000);
+            bank.depositAmount(1001, 5000);
         }
 
 }
