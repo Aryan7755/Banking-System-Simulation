@@ -63,4 +63,21 @@ public class Bank {
             System.out.println("No previous data found");
         }
     }
+
+    public void transfer(int fromAcc, int toAcc, double amount) {
+        Account sender = getAccount(fromAcc);
+        Account receiver = getAccount(toAcc);
+
+        if (sender == null || receiver == null) return;
+
+        try {
+            sender.withdraw(amount);
+            receiver.deposit(amount);
+
+            System.out.println("Transfer successful");
+
+        } catch (InsufficientBalanceException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
