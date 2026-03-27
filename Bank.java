@@ -22,4 +22,21 @@ public class Bank {
 
         acc.deposit(amount);
     }
+
+    public void withdraw(int accNo, double amount) {
+        Account acc = accounts.get(accNo);
+
+        if (acc == null) {
+            System.out.println("Account not found");
+            return;
+        }
+        try {
+            acc.withdraw(amount);
+        } catch (InsufficientBalanceException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+    }
 }
