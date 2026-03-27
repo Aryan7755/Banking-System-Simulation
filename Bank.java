@@ -1,6 +1,4 @@
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.*;
 
 public class Bank {
@@ -57,6 +55,15 @@ public class Bank {
             System.out.println("Data saved successfully");
         } catch (IOException e) {
             System.out.println("Error saving data");
+        }
+    }
+
+    public void loadFromFile() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("bank.dat"))) {
+            accounts = (HashMap<Integer, Account>) ois.readObject();
+            System.out.println("Data loaded successfully");
+        } catch (Exception e) {
+            System.out.println("No previous data found");
         }
     }
 }
